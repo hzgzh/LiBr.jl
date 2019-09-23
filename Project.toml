@@ -1,0 +1,10 @@
+name = "LiBr"
+uuid = "2196b101-3ac0-4e12-b5a8-532424305d17"
+authors = ["hzgzh <hzgzh@sina.com>"]
+version = "0.1.0"
+[deps]
+Roots="f2b01f46-fcfa-551c-844a-d8ac1e96c665"
+XSteam="95ff35a0-be81-11e9-2ca3-5b4e338e8476"
+ForwardDiff="f6369f11-7733-5829-9624-2563aa707210"
+[compat]
+julia="1"
