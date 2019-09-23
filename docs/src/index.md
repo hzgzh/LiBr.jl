@@ -3,7 +3,7 @@
  The property routines described here are for the aqueous salt mixture LiBr/H2O. These routines were developed primarily as a part of the Sorption Systems Consortium at the University of Maryland.
 The basic rotuines are provided in an external library named LiBrSSC.dll. The routines available in this library are listed in Table 1. The units of the properties must be as specified.
 
-<center>Table 1. Summary of LiBrSSC Routines</center>
+Table 1. Summary of LiBrSSC Routines
 
 |Functions|Units|Comments|
 |-|-|-|
@@ -105,7 +105,7 @@ be easily derived from the Gibbs function. And a corollary is that all of the de
 in the literature [4, 5]. It provides excellent fidelity with the available data over the full concentration range from
 pure water up to crystallization and from 0 – 300°C.
 
-###Enthalpy of Aqueous Lithium Bromide
+### Enthalpy of Aqueous Lithium Bromide
 
 <center>h = libr_h(T,x) or h = libr_h(T,x,P)</center>
 In general, we expect three independent properties to be required to specify state for a binary mixture such as
@@ -115,19 +115,19 @@ use where the pressure effects can be ignored, the SSC enthalpy routine has an o
 (and uses) the saturation pressure for cases where the user does not input a pressure value. Example calculation: T
 = 25°C (298.15K), X = 50% ➡ h = 52.92 J/g.
 
-###Entropy of Aqueous Lithium Bromide
+### Entropy of Aqueous Lithium Bromide
 <center>s = libr_s(x,T,p) or s = libr_s(x,T,p)</center>
 Example calculation: T = 25°C (298.15K), X = 50% ➡ s = 0.1853 J/g-K.
 
-###Specific Heat of Aqueous Lithium Bromide
+### Specific Heat of Aqueous Lithium Bromide
 <center>cp = libr_cp(x,T) or cp = libr_cp(x,T,p)</center>
 Example calculation: T = 25°C (298.15K), X = 50% ➡ cp = 2.151 J/g-K.
 
-###Specific Volume of Aqueous Lithium Bromide
+### Specific Volume of Aqueous Lithium Bromide
 <center>v = libr_v(x,T)</center>
 Example calculation: T = 25°C (298.15K), X = 50% ➡ v = 0.0006523 m3/kg
 
-###Chemical Potential in Aqueous Lithium Bromide
+### Chemical Potential in Aqueous Lithium Bromide
 <center> g,dgdx,mu_w,mu_s=libr_part_g(x,T,p)</center>
 
 $$g_w=u_w=g-x(\frac{∂g}{∂x})_{p,T}$$
@@ -139,7 +139,7 @@ Example calculation: T = 25°C (298.15K), X = 50% LiBr, P = 0.8071 kPa ➡ g = -
 One of the aspects of partial properties is that you can sum them up to obtain the mixture property as
 $$g=\frac{(100-x)g_w+xg_s}{100}$$
 
-###Partial Enthalpy in Aqueous Lithium Bromide
+### Partial Enthalpy in Aqueous Lithium Bromide
 <center> h,dhdx,h_w,h_s=libr_part_h(x,T,p)</center>
 
 $$h_w=h-x(\frac{∂h}{∂x})_{p,T}$$
@@ -151,7 +151,7 @@ Example calculation: T = 25°C (298.15K), X = 50% LiBr, P = 0.8071 kPa ➡ h = 5
 One of the aspects of partial properties is that you can sum them up to obtain the mixture property as
 $$h=\frac{(100-x)h_w+xh_s}{100}$$
 
-###Partial Entropy in Aqueous Lithium Bromide
+### Partial Entropy in Aqueous Lithium Bromide
 <center> s,dsdx,s_w,s_s=libr_part_s(x,T,p)</center>
 
 $$s_w=s-x(\frac{∂s}{∂x})_{p,T}$$
@@ -163,7 +163,7 @@ J/g-K, hw = 0.4942 J/g-K, ss = -0.1235 J/g-K.
 One of the aspects of partial properties is that you can sum them up to obtain the mixture property as
 $$s=\frac{(100-x)s_w+xs_s}{100}$$
 
-###Partial Volume in Aqueous Lithium Bromide
+### Partial Volume in Aqueous Lithium Bromide
 <center> v,dvdx,v_w,v_s=libr_part_v(x,T,p)</center>
 
 $$v_w=v-x(\frac{∂v}{∂x})_{p,T}$$
@@ -175,7 +175,7 @@ cm3/g, vs = 0.3033 cm3/g.
 One of the aspects of partial properties is that you can sum them up to obtain the mixture property as
 $$v=\frac{(100-x)v_w+xv_s}{100}$$
 
-###Saturation Properties of Aqueous Lithium Bromide
+### Saturation Properties of Aqueous Lithium Bromide
 
 * Psat = libr_p(x,T)
 * Tsat = libr_t(x,p)
@@ -183,7 +183,7 @@ $$v=\frac{(100-x)v_w+xv_s}{100}$$
 
 Example calculation: T = 25°C, X = 50% ➡ P = 0.8139 kPa
 
-###Flashing of Aqueous Lithium bromide
+### Flashing of Aqueous Lithium bromide
 <center>q,T,x,hl,hv=LibrFlash(x,h,p)</center>
 This is a utility routine to automate the mass and energy balances involved in flashing through a valve or other
 pressure restriction. It assumes an adiabatic process. Inputs are enthalpy (h), LiBr mass fraction and the pressure at
@@ -194,7 +194,7 @@ hv = 2504.34 J/g.
 
 Note: The overall mass, LiBr mass and energy balances are all satisfied
 
-###References
+### References
 1. SSC, Transport Property Data for Aqueous Lithium Bromide, in SSC
 Unpublished Report1998.
 2. Bostick, D.A., Klatt, L.N., Perez-Blanco, H., Fiber optics
