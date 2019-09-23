@@ -170,24 +170,37 @@ function libr_k(x, T)
     return a[1] + a[2] * x + b[1] * T + b[2] * T * x + c[1] * T * T +
            c[2] * T * T * x + d[1] * T^3.0 + d[2] * T^3.0 * x
 end
-
-fun(x, T, p) =
-    h_pT(p / 100.0, T - 273.15) - (T) * s_pT(p / 100.0, T - 273.15) -
-    libr_uw(x, T, p)
+function check(p,s::String,r::Vector)
+    if p<r[1] || p>r[2]
+        throw(DomainError(s*" should be in range[$(r[1]):$(r[2])]"))
+    end
+end
+fun(x, T, p) = hV_p(p / 100.0) - T * sV_p(p / 100.0) - libr_uw(x, T, p)
 
 function libr_p(x, T)
+    if fun(x,T,0.612)* fun(x,T,15696)>0
+        throw(DomainError("can't find feasible solution,Please change x or T"))
+    end
     f(p) = fun(x, T, p)
-    fzero(f, 0.8)
+    find_zero(f, [0.612,15696])
 end
 
 function libr_x(T, p)
+    check(p,"p",[0.613,15696.0])
+    if fun(0,T,p)*fun(100,T,p)>0
+        throw(DomainError("can't find feasible solution,Please change T or p"))
+    end
     f(x) = fun(x, T, p)
-    fzero(f, 50.0)
+    find_zero(f, [0,100])
 end
 
 function libr_t(x, p)
+    check(p,"p",[0.613,15696])
+    if fun(x,274,p)* fun(x,623,p)>0
+        throw(DomainError("can't find feasible solution,Please change T or p"))
+    end
     f(T) = fun(x, T, p)
-    fzero(f, 330.0)
+    find_zero(f, [274,623])
 end
 
 function flashfun(xl, x, h1, p)
@@ -198,9 +211,8 @@ function flashfun(xl, x, h1, p)
 end
 
 function libr_flash(x, h, p)
-    if p < 0.613
-        throw(DomainError(" error: p<0.613kPa"))
-    end
+    check(p,"p",[0.613,15696.0])
+    check(x,"x",[4.0,76.0])
     f(xt) = flashfun(xt, x, h, p)
     xt = fzero(f, x)
     hv = hV_p(p / 100)

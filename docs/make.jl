@@ -1,7 +1,2 @@
 using Documenter,LiBr
-makedocs(sitename="My Documentation",
-pages = [
-        "index.md"
-        ]
-    
-)
+makedocs(sitename="LiBr manual")

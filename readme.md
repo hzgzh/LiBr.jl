@@ -181,7 +181,7 @@ $$v=\frac{(100-x)v_w+xv_s}{100}$$
 * Tsat = libr_t(x,p)
 * Xsat = libr_x(T,p)
 
-Example calculation: T = 25°C, X = 50% ➡ P = 0.8139 kPa
+Example calculation: T = 25°C, X = 50% ➡ P = 0.8052 kPa
 
 ### Flashing of Aqueous Lithium bromide
 <center>q,T,x,hl,hv=LibrFlash(x,h,p)</center>
