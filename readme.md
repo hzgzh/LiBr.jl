@@ -164,7 +164,7 @@ One of the aspects of partial properties is that you can sum them up to obtain t
 $$s=\frac{(100-x)s_w+xs_s}{100}$$
 
 ### Partial Volume in Aqueous Lithium Bromide
-<center> v,dvdx,v_w,v_s=libr_part_v(x,T,p)</center>
+<center> v,dvdx,v_w,v_s=libr_part_v(x,T)</center>
 
 $$v_w=v-x(\frac{∂v}{∂x})_{p,T}$$
 $$v_s=v+(100-x)\frac{∂v}{∂x}_{p,T}$$

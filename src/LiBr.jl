@@ -109,17 +109,17 @@ end
 ∂g∂x(x, T, p = 1.0) = ForwardDiff.derivative(x -> g(x, T, p), x)
 ∂²g∂x²(x, T, p = 1.0) = ForwardDiff.derivative(x -> ∂g∂x(x, T, p), x)
 ∂g∂t(x, T, p = 1.0) = ForwardDiff.derivative(T -> g(x, T, p), T)
-∂g∂p(x, T, p) = ForwardDiff.derivative(p -> g(x, T, p), p)
-∂²g∂t²(x, T, p) = ForwardDiff.derivative(T -> ∂g∂t(x, T, p), T)
-∂h∂x(x, T, p) = ForwardDiff.derivative(x -> libr_h(x, T, p), x)
+∂g∂p(x, T, p = 1.0) = ForwardDiff.derivative(p -> g(x, T, p), p)
+∂²g∂t²(x, T, p =1.0) = ForwardDiff.derivative(T -> ∂g∂t(x, T, p), T)
+∂h∂x(x, T, p=1.0) = ForwardDiff.derivative(x -> libr_h(x, T, p), x)
 
 libr_s(x, T, p = 1.0) = -∂g∂t(x, T, p)
 libr_v(x, T, p = 1.0) = ∂g∂p(x, T, p)
-libr_cp(x, T, p) = -T * ∂²g∂t²(x, T, p)
-libr_h(x, T, p) = g(x, T, p) + T * libr_s(x, T, p)
+libr_cp(x, T, p = 1.0) = -T * ∂²g∂t²(x, T, p)
+libr_h(x, T, p = 1.0) = g(x, T, p) + T * libr_s(x, T, p)
 libr_uw(x, T, p = 1.0) = g(x, T, p) - x * ∂g∂x(x, T, p)
-libr_us(x, T, p) = g(x, T, p) + (100 - x) * ∂g∂x(x, T, p)
-libr_u(x, T, p) = libr_h(x, T, p) - p * libr_v(x, T)
+libr_us(x, T, p = 1.0) = g(x, T, p) + (100 - x) * ∂g∂x(x, T, p)
+libr_u(x, T, p = 1.0) = libr_h(x, T, p) - p * libr_v(x, T)
 hw(x, T, p) = libr_h(x, T, p) - x * ∂h∂x(x, T, p)
 hs(x, T, p) = libr_h(x, T, p) + (100.0 - x) * ∂h∂x(x, T, p)
 qd(x, T, p) = libr_h(0.0, T, p) - hw(x, T, p)
@@ -248,7 +248,7 @@ end
 
 function libr_part_v(x, T)
     v = libr_v(x, T)
-    ∂v∂x = Calculus.derivative(x -> libr_v(x, T), x)
+    ∂v∂x = ForwardDiff.derivative(x -> libr_v(x, T), x)
     vw = v - x * ∂v∂x
     vs = v + (100 - x) * ∂v∂x
     v, ∂v∂x, vw, vs
