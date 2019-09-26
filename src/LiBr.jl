@@ -15,6 +15,7 @@ export libr_k,
        libr_cp,
        libr_μ,
        libr_uw,
+       libr_u,
        libr_us,
        libr_v,
        libr_s,
@@ -27,7 +28,11 @@ export libr_k,
        libr_part_g,
        libr_part_h,
        libr_part_s,
-       libr_part_v
+       libr_part_v,
+       libr_xht,
+       libr_htx,
+       libr_xst,
+       libr_stx
 
 
 using Roots
@@ -120,6 +125,10 @@ libr_h(x, T, p = 1.0) = g(x, T, p) + T * libr_s(x, T, p)
 libr_uw(x, T, p = 1.0) = g(x, T, p) - x * ∂g∂x(x, T, p)
 libr_us(x, T, p = 1.0) = g(x, T, p) + (100 - x) * ∂g∂x(x, T, p)
 libr_u(x, T, p = 1.0) = libr_h(x, T, p) - p * libr_v(x, T)
+libr_xht(x,h,p=1.0)=find_zero(T->libr_h(x,T,p)-h,[274,623])
+libr_xst(x,s,p=1.0)=find_zero(T->libr_s(x,T,p)-s,[274,623])
+libr_htx(h,T,p=1.0)=find_zero(x->libr_h(x,T,p)-h,[4,76])
+libr_stx(s,T,p=1.0)=find_zero(x->libr_s(x,T,p)-s,[4,76])
 hw(x, T, p) = libr_h(x, T, p) - x * ∂h∂x(x, T, p)
 hs(x, T, p) = libr_h(x, T, p) + (100.0 - x) * ∂h∂x(x, T, p)
 qd(x, T, p) = libr_h(0.0, T, p) - hw(x, T, p)
@@ -131,7 +140,6 @@ function libr_refindex(x, T)
 end
 
 function libr_tcryst(x)
-
     a0 = [62.63716, 0.04810823, 0.00024301]
     a1 = [56.95202, 0.05205944, 0.00346278]
     a2 = [56.55952, 0.2337275, 0.00141297]
@@ -150,7 +158,6 @@ function libr_tcryst(x)
 end
 
 function libr_μ(x, T)
-
     x = x / 100
     a = [-2.3212641667148, 3.190587778753]
     b = [-609.44957160372, 963.16370163469]
@@ -159,6 +166,8 @@ function libr_μ(x, T)
         c[2] * x^2.0 / T^2.0
     return exp(d)
 end
+
+
 
 function libr_k(x, T)
 
