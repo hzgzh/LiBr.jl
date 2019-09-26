@@ -25,6 +25,11 @@ Table 1. Summary of LiBrSSC Routines
 |Partial mass entropy|J/g-K|s,dsdx,s_w,s_s=libr_part_s(x, T, P )|
 |Partial mass volume|$m^3/kg$|v,dvdx,v_w,v_s=libr_part_v(x, T, P )|
 |Flashing process|-|q,T,x,hl,hv=libr_flash(x,h,p)|
+|help function|||
+|Temperature according Enthalpy|K|T=libr_xht(x,h,p)|
+|Mass faction accroding Enthalpy|%|x=libr_htx(h,t,p)|
+|Temperature according entropy|K|T=libr_xst(x,s,p)|
+|Mass faction according entropy|%|x=libr_stx(s,t,p)|
 
 See details on units in procedure description
 Input Units: Tc - K, X – mass fraction of LiBr %, P – kPa
